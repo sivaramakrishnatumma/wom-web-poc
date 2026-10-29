@@ -1,0 +1,41 @@
+// Source strings. Every other locale must provide the same keys.
+const en = {
+  appTitle: 'Technician Chat',
+  online: 'Online',
+  offline: 'Offline. Translation unavailable.',
+  myLanguage: 'My language',
+  customerLanguage: 'Customer language',
+  technician: 'Technician',
+  customer: 'Customer',
+  whoIsSpeaking: 'Who is speaking?',
+  typeMessage: 'Type a message…',
+  youAreOffline: 'You are offline',
+  send: 'Send',
+  tapToSpeak: 'Tap to speak',
+  stopAndSend: 'Stop and send',
+  cancel: 'Cancel',
+  listening: 'Listening… {{time}}',
+  transcribing: 'Transcribing…',
+  translating: 'Translating…',
+  copy: 'Copy',
+  copied: 'Copied',
+  translateTo: 'Translate to…',
+  listen: 'Listen',
+  retry: 'Retry',
+  clearChat: 'Clear chat',
+  emptyTitle: 'Tap the mic and speak.',
+  emptyHint: 'Your words will be written down and translated.',
+  micDenied: 'Microphone access was denied. Allow it in your browser settings.',
+  micUnsupported: 'This browser cannot record audio.',
+  noSpeech: 'No speech was heard. Please try again.',
+  wrongLanguage: "This didn't sound like {{language}}. Check who is speaking and the language, then try again.",
+  failed: 'Something went wrong. Please try again.',
+  offlineReady: 'App is ready to work offline.',
+  newVersion: 'A new version is available.',
+  reload: 'Reload',
+  close: 'Close',
+}
+
+export type Messages = typeof en
+
+export default en
