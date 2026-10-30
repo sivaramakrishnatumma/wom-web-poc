@@ -1,0 +1,33 @@
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 16px 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--error-border);
+  border-radius: 14px;
+  background: var(--error-bg);
+  color: var(--error);
+  font-size: 14px;
+  box-shadow: var(--shadow-sm);
+  animation: rise 0.2s ease-out;
+}
+
+.notice svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.notice span {
+  flex: 1;
+}
+
+.notice button {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}

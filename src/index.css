@@ -1,42 +1,74 @@
 :root {
-  --text: #1f1d24;
-  --muted: #6b6375;
-  --bg: #f4f3f7;
+  /* Brand — taken from qsourcegroupinc.com and qtren.com */
+  --brand: #0085f6; /* primary blue: solid buttons, technician bubbles */
+  --brand-strong: #0068d0; /* blue for text/icons on light surfaces (readable) */
+  --brand-soft: rgba(0, 133, 246, 0.08);
+  --accent: #0095da; /* secondary cyan */
+  --on-brand: #fff;
+  --ink: #021933; /* navy: headings, body text, dark pill buttons */
+  --on-ink: #fff;
+
+  /* Surfaces & text */
+  --bg: #f8fbff;
+  --bg-dot: rgba(0, 133, 246, 0.07);
   --surface: #fff;
-  --border: #e5e4e7;
-  --accent: #646cff;
-  --accent-text: #fff;
-  --bot-bubble: #fff;
-  --ok: #2e7d32;
-  --error: #c62828;
-  --error-bg: #fdecea;
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --surface-2: #eef5fd;
+  --text: #021933;
+  --muted: #4e5e70;
+  --border: #dce7f8;
+  --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234e5e70' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  /* Status */
+  --ok: #16a34a;
+  --error: #dc2626;
+  --error-bg: #fef2f2;
+  --error-border: #fecaca;
 
-  font: 16px/1.45 var(--sans);
-  color-scheme: light dark;
+  /* Depth */
+  --shadow-sm: 0 1px 2px rgba(2, 25, 51, 0.05), 0 1px 3px rgba(2, 25, 51, 0.07);
+  --shadow-md: 0 10px 30px -12px rgba(2, 25, 51, 0.22);
+  --shadow-brand: 0 10px 22px -10px rgba(0, 133, 246, 0.55);
+
+  --radius: 22px;
+  --sans: 'Onest Variable', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans',
+    'Noto Sans Telugu', 'Noto Sans Devanagari', sans-serif;
+
+  font: 16px/1.5 var(--sans);
+  color-scheme: light;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #f3f4f6;
-    --muted: #9ca3af;
-    --bg: #111217;
-    --surface: #1b1c23;
-    --border: #2e303a;
-    --accent: #7c83ff;
-    --bot-bubble: #24252e;
-    --ok: #81c784;
-    --error: #ff8a80;
-    --error-bg: #3a1f1f;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-  }
+/* Dark theme, chosen with the header toggle (light is the default). The
+   sites have no dark mode; this one is built from their navy. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --brand-strong: #5aaefc;
+  --brand-soft: rgba(0, 133, 246, 0.18);
+  --ink: #e6eefa;
+  --on-ink: #021933;
+
+  --bg: #010f1f;
+  --bg-dot: rgba(0, 133, 246, 0.1);
+  --surface: #071a30;
+  --surface-2: #0c243f;
+  --text: #e6eefa;
+  --muted: #96a9c2;
+  --border: #183453;
+  --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2396a9c2' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+
+  --ok: #4ade80;
+  --error: #f87171;
+  --error-bg: #2d1218;
+  --error-border: #5b1d27;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 12px 32px -12px rgba(0, 0, 0, 0.7);
+  --shadow-brand: 0 10px 24px -10px rgba(0, 133, 246, 0.45);
 }
 
 * {
@@ -54,9 +86,137 @@ body {
   justify-content: center;
 }
 
+/* On larger screens the chat floats as a card */
+@media (min-width: 800px) {
+  body {
+    background: var(--bg);
+  }
+
+  #root {
+    padding: 24px;
+  }
+}
+
 button,
 select,
 textarea {
   font: inherit;
   color: inherit;
+}
+
+button {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand-strong);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ───────── Shared ───────── */
+
+/* Small rounded action button (message actions, cancel) */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    border-color 0.15s,
+    transform 0.1s;
+}
+
+.pill:hover {
+  color: var(--brand-strong);
+  border-color: color-mix(in srgb, var(--brand) 40%, var(--border));
+}
+
+.pill:active {
+  transform: scale(0.96);
+}
+
+.pill:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Large circular action button (mic, send, stop) */
+.round {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 50%;
+  color: var(--on-brand);
+  background: var(--brand);
+  box-shadow: var(--shadow-brand);
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+
+.round:hover {
+  transform: translateY(-1px) scale(1.04);
+}
+
+.round:active {
+  transform: scale(0.94);
+}
+
+.round:disabled {
+  opacity: 0.4;
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+}
+
+.round.mic {
+  width: 60px;
+  height: 60px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes blink {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 1;
+  }
 }

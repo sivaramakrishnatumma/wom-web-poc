@@ -1,0 +1,49 @@
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.technician .meta {
+  justify-content: flex-end;
+}
+
+.translate-pill select {
+  max-width: 9.5rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  appearance: none;
+  cursor: pointer;
+}
+
+.translate-pill select:focus-visible {
+  outline: none;
+}
+
+.translate-pill:has(select:focus-visible) {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.translate-pill option {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.meta.error {
+  color: var(--error);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.error-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}

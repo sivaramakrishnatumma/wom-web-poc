@@ -29,8 +29,16 @@ Microphone access and PWA installation need **HTTPS** (or `localhost`). To test 
 | Path | What |
 | --- | --- |
 | `server/index.ts` | Express API: `POST /api/transcribe`, `POST /api/translate`, `GET /api/health` |
-| `src/App.tsx` | Chat screen: speaker toggle, mic recording, message list |
-| `src/useRecorder.ts` | Microphone recording (WebM on Chrome/Android, MP4 on Safari/iOS) |
+| `src/App.tsx` | Holds shared state (customer language, speaker, notice) and wires the components together |
+| `src/hooks/useChat.ts` | Conversation logic: transcribe → translate, retries, extra translations |
+| `src/hooks/useRecorder.ts` | Microphone recording (WebM on Chrome/Android, MP4 on Safari/iOS) |
+| `src/hooks/useSpeakerText.ts` | Labels in the right language for each speaker |
+| `src/hooks/useOnline.ts` | Online/offline status |
+| `src/components/` | UI: `ChatHeader`, `MessageList` → `MessageItem` → `MessageActions`, `EmptyState`, `NoticeBanner`, `Composer` → `SpeakerToggle` / `RecordingBar`, `Pending`, `PWABadge`. Each lives in its own folder with its `.tsx` and `.css` (e.g. `ChatHeader/ChatHeader.tsx` + `ChatHeader.css`); shared `icons.tsx` sits at the top level |
+| `src/index.css` | Theme tokens (colours, shadows) and shared button styles and animations |
+| `src/api.ts` | Client for the API server |
+| `src/storage.ts` | Saving and restoring the chat in the browser |
+| `src/types.ts` | Shared types (`Message`, `Speaker`, `Notice`) |
 | `src/languages.ts` | Supported languages, shared by the app and the server |
 | `src/i18n/locales/*.ts` | UI strings. `en.ts` is the source; other locales must have the same keys |
 

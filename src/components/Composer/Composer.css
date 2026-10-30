@@ -1,0 +1,46 @@
+.composer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 16px;
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -10px 30px -18px rgba(2, 25, 51, 0.25);
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.input-row textarea {
+  flex: 1;
+  resize: none;
+  field-sizing: content;
+  min-height: 56px;
+  max-height: 160px;
+  padding: 15px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: 28px;
+  background: var(--surface-2);
+  outline: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.input-row textarea::placeholder {
+  color: var(--muted);
+}
+
+.input-row textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px var(--brand-soft);
+}
+
+/* Send arrow points right; mirror it for right-to-left languages */
+[dir='rtl'] .round.send svg {
+  transform: scaleX(-1);
+}

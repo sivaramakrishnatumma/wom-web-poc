@@ -1,0 +1,79 @@
+/* Logo + text on the first row, buttons on their own row so long
+   translations (e.g. Telugu) get the full width */
+.install-banner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px 12px;
+  margin: 12px 16px 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+  animation: rise 0.3s ease-out;
+}
+
+.install-logo {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--brand);
+}
+
+.install-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.install-text strong {
+  font-size: 15px;
+  color: var(--text);
+}
+
+.install-ios svg {
+  vertical-align: -3px;
+  margin-inline-end: 4px;
+  color: var(--brand-strong);
+}
+
+.install-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+.install-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 999px;
+  background: var(--brand);
+  color: var(--on-brand);
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: var(--shadow-brand);
+  cursor: pointer;
+}
+
+.install-later {
+  padding: 8px 12px;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+}

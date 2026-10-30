@@ -1,0 +1,104 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  max-width: min(85%, 560px);
+  animation: rise 0.25s ease-out;
+}
+
+/* The technician owns the device, so their messages sit on the "me" side */
+.row.technician {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.row.customer {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.who {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 4px 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.who-avatar {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.technician .who-avatar {
+  color: var(--on-brand);
+  background: var(--brand);
+}
+
+.customer .who-avatar {
+  color: var(--brand-strong);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.bubble {
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.bubble p {
+  margin: 0;
+}
+
+.technician .bubble {
+  color: var(--on-brand);
+  background: var(--brand);
+  border-end-end-radius: 6px;
+  box-shadow: var(--shadow-brand);
+}
+
+.customer .bubble {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-end-start-radius: 6px;
+  box-shadow: var(--shadow-sm);
+}
+
+.bubble .original {
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.bubble .translation {
+  margin-top: 10px;
+  padding: 8px 12px 10px;
+  border-radius: 14px;
+  font-size: 15px;
+}
+
+.technician .bubble .translation {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.customer .bubble .translation {
+  background: var(--brand-soft);
+}
+
+.bubble .tag {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.75;
+}
+
+.bubble.error {
+  box-shadow: 0 0 0 2px var(--error);
+}

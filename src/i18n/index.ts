@@ -61,7 +61,7 @@ declare module 'i18next' {
 const STORAGE_KEY = 'wom-ui-language'
 
 // Technician's language (and UI language) until they pick another one
-const DEFAULT_LANGUAGE = 'te'
+const DEFAULT_LANGUAGE = 'en'
 
 function initialLanguage() {
   try {

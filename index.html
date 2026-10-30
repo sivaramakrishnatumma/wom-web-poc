@@ -4,7 +4,16 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#646cff" />
+    <meta name="theme-color" content="#ffffff" />
+    <script>
+      // Apply a saved dark theme before first paint to avoid a light flash
+      try {
+        if (localStorage.getItem('wom-theme') === 'dark') {
+          document.documentElement.dataset.theme = 'dark'
+          document.querySelector('meta[name="theme-color"]').content = '#071a30'
+        }
+      } catch {}
+    </script>
     <meta name="description" content="Speech translation chat for technicians and customers" />
     <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
     <title>WOM Technician Chat</title>

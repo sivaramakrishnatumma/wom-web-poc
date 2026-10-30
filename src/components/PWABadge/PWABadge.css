@@ -1,0 +1,37 @@
+.pwa-toast {
+  position: fixed;
+  inset-inline-end: 16px;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 10;
+  max-width: min(360px, calc(100vw - 32px));
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-md);
+  font-size: 14px;
+  animation: rise 0.25s ease-out;
+}
+
+.pwa-toast-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.pwa-toast button {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pwa-toast button:first-child:not(:only-child) {
+  border-color: transparent;
+  color: var(--on-brand);
+  background: var(--brand);
+}
